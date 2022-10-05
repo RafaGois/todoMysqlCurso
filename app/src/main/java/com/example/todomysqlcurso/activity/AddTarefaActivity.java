@@ -1,8 +1,10 @@
-package com.example.todomysqlcurso;
+package com.example.todomysqlcurso.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.todomysqlcurso.R;
 
 public class AddTarefaActivity extends AppCompatActivity {
 
