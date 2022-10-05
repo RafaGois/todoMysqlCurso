@@ -33,7 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerV);
 
+    }
 
+    //sempre que sair da activity e voltar irá recarregar a listagem
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        carregarListaTarefas();
     }
 
     public void adiciona (View view){
@@ -48,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         tarefa1.setNomeTarefa("Ir ao mercado");
         tarefas.add(tarefa1);
 
-        tarefaAdapter = new TarefaAdapter( tarefas );
+        Tarefa tarefa2 = new Tarefa();
+        tarefa2.setNomeTarefa("Comprar ssd");
+        tarefas.add(tarefa2);
+
+        tarefaAdapter = new TarefaAdapter(tarefas);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
