@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                 )
         );
-
     }
 
     //sempre que sair da activity e voltar irá recarregar a listagem
