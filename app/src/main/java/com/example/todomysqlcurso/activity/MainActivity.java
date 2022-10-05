@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.todomysqlcurso.R;
 import com.example.todomysqlcurso.activity.AddTarefaActivity;
 import com.example.todomysqlcurso.adapter.TarefaAdapter;
+import com.example.todomysqlcurso.helper.RecyclerItemClickListener;
 import com.example.todomysqlcurso.model.Tarefa;
 
 import java.util.ArrayList;
@@ -32,6 +34,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerV);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(), recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                )
+        );
 
     }
 

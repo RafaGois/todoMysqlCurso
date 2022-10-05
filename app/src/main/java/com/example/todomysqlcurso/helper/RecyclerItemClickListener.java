@@ -1,4 +1,4 @@
-package com.example.todomysqlcurso;
+package com.example.todomysqlcurso.helper;
 
 import android.content.Context;
 import android.view.GestureDetector;
