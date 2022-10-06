@@ -29,7 +29,7 @@ public class AddTarefaActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.itemSalvar:
-                Toast.makeText(this, "aaaaaaaaa", Toast.LENGTH_SHORT).show();
+
                 break;
         }
 

@@ -37,14 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerV);
 
-        DBHelper helper = new DBHelper(getApplicationContext());
-
-        //permite difinit itens igual array
-        ContentValues cv = new ContentValues();
-
-        cv.put("nome","sei la");
-
-        helper.getWritableDatabase().insert("tarefas", null,cv);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
