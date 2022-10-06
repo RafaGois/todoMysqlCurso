@@ -1,14 +1,17 @@
 package com.example.todomysqlcurso.activity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private TarefaAdapter tarefaAdapter;
     private List<Tarefa> tarefas = new ArrayList<>();
-
+    private Tarefa tarefaSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,29 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onLongItemClick(View view, int position) {
+
+                                tarefaSelecionada = tarefas.get(position);
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+                                dialog.setTitle("Confirmar exclusão");
+                                dialog.setMessage("Deseja excluir a tarefa :"+ tarefaSelecionada.getId()+" ?");
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+
+                                        if (tarefaDAO.deletar(tarefaSelecionada)) {
+                                            Toast.makeText(MainActivity.this, "TAREFA DELETADA", Toast.LENGTH_SHORT).show();
+                                            carregarListaTarefas();
+                                        } else {
+                                            Toast.makeText(MainActivity.this, "ERRO AO EXCLUIR TAREFA", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                dialog.setNegativeButton("Não", null);
+
+                                dialog.create();
+                                dialog.show();
 
                             }
 
