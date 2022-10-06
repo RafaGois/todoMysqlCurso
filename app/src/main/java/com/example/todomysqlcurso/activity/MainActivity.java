@@ -19,6 +19,7 @@ import com.example.todomysqlcurso.activity.AddTarefaActivity;
 import com.example.todomysqlcurso.adapter.TarefaAdapter;
 import com.example.todomysqlcurso.helper.DBHelper;
 import com.example.todomysqlcurso.helper.RecyclerItemClickListener;
+import com.example.todomysqlcurso.helper.TarefaDAO;
 import com.example.todomysqlcurso.model.Tarefa;
 
 import java.util.ArrayList;
@@ -77,13 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void carregarListaTarefas () {
 
-        Tarefa tarefa1 = new Tarefa();
-        tarefa1.setNomeTarefa("Ir ao mercado");
-        tarefas.add(tarefa1);
-
-        Tarefa tarefa2 = new Tarefa();
-        tarefa2.setNomeTarefa("Comprar ssd");
-        tarefas.add(tarefa2);
+        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+        tarefas = tarefaDAO.listar();
 
         tarefaAdapter = new TarefaAdapter(tarefas);
 
