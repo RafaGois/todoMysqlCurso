@@ -1,5 +1,6 @@
 package com.example.todomysqlcurso.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.todomysqlcurso.R;
 import com.example.todomysqlcurso.activity.AddTarefaActivity;
 import com.example.todomysqlcurso.adapter.TarefaAdapter;
+import com.example.todomysqlcurso.helper.DBHelper;
 import com.example.todomysqlcurso.helper.RecyclerItemClickListener;
 import com.example.todomysqlcurso.model.Tarefa;
 
@@ -34,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerV);
+
+        DBHelper helper = new DBHelper(getApplicationContext());
+
+        //permite difinit itens igual array
+        ContentValues cv = new ContentValues();
+
+        cv.put("nome","sei la");
+
+        helper.getWritableDatabase().insert("tarefas", null,cv);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
