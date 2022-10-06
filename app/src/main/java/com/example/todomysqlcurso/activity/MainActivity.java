@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private TarefaAdapter tarefaAdapter;
     private List<Tarefa> tarefas = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+                                Tarefa tarefaSelecionada = tarefas.get(position);
 
+                                Intent intent = new Intent(MainActivity.this,AddTarefaActivity.class);
+                                intent.putExtra("nomeTarefa",tarefaSelecionada);
+                                startActivity(intent);
                             }
 
                             @Override

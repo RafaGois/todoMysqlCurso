@@ -35,14 +35,28 @@ public class TarefaDAO implements ITarefaDAO{
             Log.i("ATT ","Tarefa salva com sucesso");
         } catch (Exception e) {
             Log.e("Erro",e.getMessage());
+            return false;
         }
-
         return true;
     }
 
     @Override
     public boolean atualizar(Tarefa tarefa) {
-        return false;
+
+        ContentValues cv = new ContentValues();
+        cv.put("nome",tarefa.getNomeTarefa());
+
+        String args [] = { tarefa.getId().toString() };
+
+        //usamos o array pq pode ter mais de uma clausula
+        try {
+            escreve.update(DBHelper.TABELA_TAREFAS,cv, "id=?", args);
+            Log.i("ATT ","Tarefa atualizada com sucesso");
+        } catch (Exception e) {
+            Log.e("Erro",e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     @Override
