@@ -26,9 +26,15 @@ public class DBHelper extends SQLiteOpenHelper {
         //todo ao instalar o app já criar a tabela e adicionar os valores das tabuas passados como exemplo
 
         String query = "CREATE TABLE IF NOT EXISTS "+ TABELA_TAREFAS +" (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, descricao TEXT);";
+        String queryAdd = "INSERT INTO "+TABELA_TAREFAS+" (nome, descricao) VALUES ('TESTE','VALOR ADICONADO AO CRIAR O APP')";
 
         try {
             db.execSQL(query);
+
+            for (int i = 0; i < 5; i++) {
+                db.execSQL(queryAdd);
+            }
+
             Log.i("INFO DB","Sucesso ao criar tabela");
 
         }catch (Exception e) {
