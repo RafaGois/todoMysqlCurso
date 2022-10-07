@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), AddTarefaActivity.class);
         startActivity(intent);
+
     }
 
     public void carregarListaTarefas () {
@@ -119,5 +120,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
         recyclerView.setAdapter(tarefaAdapter);
+    }
+
+    public void navegaGrath (View view) {
+        Intent intent = new Intent(this,Graph.class);
+        startActivity(intent);
     }
 }
