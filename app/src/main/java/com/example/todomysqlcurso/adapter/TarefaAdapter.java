@@ -34,6 +34,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
 
         Tarefa tarefa = tarefas.get(position);
         holder.nomeTarefa.setText(tarefa.getNomeTarefa());
+        holder.descTarefa.setText(tarefa.getDescTarefa());
     }
 
     @Override
@@ -44,11 +45,13 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView nomeTarefa;
+        TextView descTarefa;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nomeTarefa = itemView.findViewById(R.id.textTarefa);
+            descTarefa = itemView.findViewById(R.id.textViewDesc);
         }
     }
 

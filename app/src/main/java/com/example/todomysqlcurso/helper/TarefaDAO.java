@@ -29,6 +29,7 @@ public class TarefaDAO implements ITarefaDAO{
 
         ContentValues cv = new ContentValues();
         cv.put("nome",tarefa.getNomeTarefa());
+        cv.put("descricao",tarefa.getDescTarefa());
 
         try {
             escreve.insert(DBHelper.TABELA_TAREFAS,null,cv);
@@ -45,6 +46,7 @@ public class TarefaDAO implements ITarefaDAO{
 
         ContentValues cv = new ContentValues();
         cv.put("nome",tarefa.getNomeTarefa());
+        cv.put("descricao",tarefa.getDescTarefa());
 
         String args [] = { tarefa.getId().toString() };
 
@@ -61,9 +63,6 @@ public class TarefaDAO implements ITarefaDAO{
 
     @Override
     public boolean deletar(Tarefa tarefa) {
-
-        ContentValues cv = new ContentValues();
-        cv.put("nome",tarefa.getNomeTarefa());
 
         String args [] = { tarefa.getId().toString() };
 
@@ -90,6 +89,7 @@ public class TarefaDAO implements ITarefaDAO{
         
         int posicaoId = c.getColumnIndex("id");
         int posicaoNome = c.getColumnIndex("nome");
+        int posicaoDesc = c.getColumnIndex("descricao");
 
         c.moveToFirst();
         while (c.moveToNext()) {
@@ -97,9 +97,11 @@ public class TarefaDAO implements ITarefaDAO{
 
             Long id = c.getLong(posicaoId);
             String nomeTarefa = c.getString(posicaoNome);
+            String descTarefa = c.getString(posicaoDesc);
 
             tarefa.setId(id);
             tarefa.setNomeTarefa(nomeTarefa);
+            tarefa.setDescTarefa(descTarefa);
 
             tarefas.add(tarefa);
         }

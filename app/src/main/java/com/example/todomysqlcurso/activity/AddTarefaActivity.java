@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AddTarefaActivity extends AppCompatActivity {
 
     private EditText editTarefa;
+    private EditText editDescTarefa;
     private Tarefa tarefaAtual;
 
     @Override
@@ -25,11 +26,13 @@ public class AddTarefaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_tarefa);
 
         editTarefa = findViewById(R.id.inputTarefa);
+        editDescTarefa = findViewById(R.id.inputDesc);
 
-        tarefaAtual = (Tarefa) getIntent().getSerializableExtra("nomeTarefa");
+        tarefaAtual = (Tarefa) getIntent().getSerializableExtra("Tarefa");
 
         if (tarefaAtual != null) {
             editTarefa.setText(tarefaAtual.getNomeTarefa());
+            editDescTarefa.setText(tarefaAtual.getDescTarefa());
         }
     }
 
@@ -50,9 +53,12 @@ public class AddTarefaActivity extends AppCompatActivity {
                 if (tarefaAtual != null) {
 
                     String nomeTarefa = editTarefa.getText().toString();
+                    String descTarefa = editDescTarefa.getText().toString();
+
                     if (!nomeTarefa.isEmpty()) {
                         Tarefa tarefa = new Tarefa();
                         tarefa.setNomeTarefa(nomeTarefa);
+                        tarefa.setDescTarefa(descTarefa);
                         tarefa.setId(tarefaAtual.getId());
 
                         if (tarefaDAO.atualizar(tarefa)) {
@@ -67,10 +73,13 @@ public class AddTarefaActivity extends AppCompatActivity {
 
 
                     String nomeTarefa = editTarefa.getText().toString();
+                    String descTarefa = editDescTarefa.getText().toString();
 
                     if (!nomeTarefa.isEmpty()) {
                         Tarefa tarefa = new Tarefa();
+
                         tarefa.setNomeTarefa(nomeTarefa);
+                        tarefa.setDescTarefa(descTarefa);
 
                         if (tarefaDAO.salvar(tarefa)) {
                             Toast.makeText(this, "Sucesso ao salvar Tarefa", Toast.LENGTH_SHORT).show();

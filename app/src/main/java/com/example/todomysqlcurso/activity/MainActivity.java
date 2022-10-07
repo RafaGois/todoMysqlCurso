@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                                 Tarefa tarefaSelecionada = tarefas.get(position);
 
                                 Intent intent = new Intent(MainActivity.this,AddTarefaActivity.class);
-                                intent.putExtra("nomeTarefa",tarefaSelecionada);
+                                intent.putExtra("Tarefa",tarefaSelecionada);
                                 startActivity(intent);
                             }
 
