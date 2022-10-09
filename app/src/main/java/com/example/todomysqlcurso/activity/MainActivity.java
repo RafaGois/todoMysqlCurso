@@ -1,6 +1,6 @@
 package com.example.todomysqlcurso.activity;
 
-import android.content.ContentValues;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todomysqlcurso.R;
-import com.example.todomysqlcurso.activity.AddTarefaActivity;
 import com.example.todomysqlcurso.adapter.TarefaAdapter;
-import com.example.todomysqlcurso.helper.DBHelper;
 import com.example.todomysqlcurso.helper.RecyclerItemClickListener;
 import com.example.todomysqlcurso.helper.TarefaDAO;
 import com.example.todomysqlcurso.model.Tarefa;
@@ -80,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                                 dialog.setNegativeButton("Não", null);
 
                                 dialog.create();
+
                                 dialog.show();
 
                             }

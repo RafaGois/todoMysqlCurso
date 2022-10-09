@@ -50,10 +50,10 @@ public class AddTarefaActivity extends AppCompatActivity {
 
                 TarefaDAO tarefaDAO = new TarefaDAO( getApplicationContext() );
 
-                if (tarefaAtual != null) {
+                String nomeTarefa = editTarefa.getText().toString();
+                String descTarefa = editDescTarefa.getText().toString();
 
-                    String nomeTarefa = editTarefa.getText().toString();
-                    String descTarefa = editDescTarefa.getText().toString();
+                if (tarefaAtual != null) {
 
                     if (!nomeTarefa.isEmpty()) {
                         Tarefa tarefa = new Tarefa();
@@ -70,10 +70,6 @@ public class AddTarefaActivity extends AppCompatActivity {
                     }
 
                 } else {
-
-
-                    String nomeTarefa = editTarefa.getText().toString();
-                    String descTarefa = editDescTarefa.getText().toString();
 
                     if (!nomeTarefa.isEmpty()) {
                         Tarefa tarefa = new Tarefa();
