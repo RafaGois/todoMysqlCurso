@@ -71,9 +71,9 @@ public class Graph extends AppCompatActivity {
         //pieDataSet.setDrawValues(false);//olhar iso
         pieChart.setData(new PieData(pieDataSet));
 
-        barChart.animateY(6000);
+        pieChart.animateY(6000);
 
-        barChart.getDescription().setText("Descricao");
-        barChart.getDescription().setTextColor(Color.GREEN);
+        pieChart.getDescription().setText("Descricao");
+        pieChart.getDescription().setTextColor(Color.GREEN);
     }
 }

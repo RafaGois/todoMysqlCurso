@@ -84,8 +84,6 @@ public class TarefaDAO implements ITarefaDAO{
         String sql = "SELECT * FROM "+ DBHelper.TABELA_TAREFAS+";";
 
         Cursor c = le.rawQuery(sql,null);
-
-        c.moveToFirst();
         
         int posicaoId = c.getColumnIndex("id");
         int posicaoNome = c.getColumnIndex("nome");
